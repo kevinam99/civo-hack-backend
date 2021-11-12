@@ -7,6 +7,8 @@ defmodule ApiWeb.Router do
 
   scope "/api", ApiWeb do
     pipe_through :api
+
+    resources "/", PageController
   end
 
   # Enables LiveDashboard only for development
