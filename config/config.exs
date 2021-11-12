@@ -8,6 +8,10 @@
 # configurations or dependencies per app, it is best to
 # move said applications out of the umbrella.
 import Config
+
+# Configure Mix tasks and generators
+config :dbstore,
+  ecto_repos: [Dbstore.Repo]
 config :phoenix, :json_library, Jason
 # Sample configuration:
 #
@@ -16,3 +20,15 @@ config :phoenix, :json_library, Jason
 #       format: "$date $time [$level] $metadata$message\n",
 #       metadata: [:user_id]
 #
+
+# Configures Elixir's Logger
+config :logger, :console,
+  format: "$time $metadata[$level] $message\n",
+  metadata: [:request_id]
+
+# Use Jason for JSON parsing in Phoenix
+config :phoenix, :json_library, Jason
+
+# Import environment specific config. This must remain at the bottom
+# of this file so it overrides the configuration defined above.
+import_config "#{Mix.env()}.exs"
