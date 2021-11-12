@@ -3,9 +3,22 @@ defmodule ApiWeb.ErrorView do
 
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.
-  # def render("500.json", _assigns) do
-  #   %{errors: %{detail: "Internal Server Error"}}
-  # end
+  def render("500.json", _assigns) do
+    %{errors: %{detail: "Internal Server Error"}}
+  end
+
+  def render("400.json", _assigns) do
+    %{errors: %{detail: "Bad data"}}
+  end
+
+  def render("404.json", _assigns) do
+    %{errors: %{detail: "Not found"}}
+  end
+
+  def render("custom_error_message.json", %{message: message}) when is_binary(message) do
+    %{errors: %{detail: message}}
+  end
+
 
   # By default, Phoenix returns the status message from
   # the template name. For example, "404.json" becomes
