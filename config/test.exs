@@ -8,6 +8,6 @@ use Mix.Config
 config :dbstore, Dbstore.Repo,
   username: "postgres",
   password: "postgres",
-  database: "dbstore_test#{System.get_env("MIX_TEST_PARTITION")}",
+  database: "dbstore_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

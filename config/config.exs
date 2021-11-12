@@ -13,6 +13,14 @@ import Config
 config :dbstore,
   ecto_repos: [Dbstore.Repo]
 config :phoenix, :json_library, Jason
+
+
+config :api, ApiWeb.Endpoint,
+  url: [host: "localhost"],
+  secret_key_base: "s3BN2/Xjh/nB087Z2ILATADlkfqHlJQJIbK5QPu4cyhXCKPbp62AeLSwNA5FMXV/",
+  render_errors: [view: ApiWeb.ErrorView, accepts: ~w(json), layout: false],
+  pubsub_server: Api.PubSub,
+  live_view: [signing_salt: "0q1xjW7R"]
 # Sample configuration:
 #
 #     config :logger, :console,
@@ -22,12 +30,15 @@ config :phoenix, :json_library, Jason
 #
 
 # Configures Elixir's Logger
-config :logger, :console,
-  format: "$time $metadata[$level] $message\n",
-  metadata: [:request_id]
+# config :logger, :console,
+#   format: "$time $metadata[$level] $message\n",
+#   metadata: [:request_id]
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
+
+config :logger, level: :warn
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

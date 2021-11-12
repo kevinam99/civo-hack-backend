@@ -8,9 +8,9 @@ defmodule Api.Application do
   def start(_type, _args) do
     children = [
       # Start the Telemetry supervisor
-      ApiWeb.Telemetry,
+      # ApiWeb.Telemetry,
       # Start the PubSub system
-      {Phoenix.PubSub, name: Api.PubSub},
+      # {Phoenix.PubSub, name: Api.PubSub},
       # Start the Endpoint (http/https)
       ApiWeb.Endpoint
       # Start a worker by calling: Api.Worker.start_link(arg)

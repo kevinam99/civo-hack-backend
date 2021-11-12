@@ -10,7 +10,7 @@ defmodule Dbstore.Application do
       # Start the Ecto repository
       Dbstore.Repo,
       # Start the PubSub system
-      {Phoenix.PubSub, name: Dbstore.PubSub}
+      # {Phoenix.PubSub, name: Dbstore.PubSub}
       # Start a worker by calling: Dbstore.Worker.start_link(arg)
       # {Dbstore.Worker, arg}
     ]

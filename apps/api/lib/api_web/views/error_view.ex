@@ -12,7 +12,7 @@ defmodule ApiWeb.ErrorView do
   end
 
   def render("404.json", _assigns) do
-    %{errors: %{detail: "Not found"}}
+    %{errors: %{detail: "Not Found"}}
   end
 
   def render("custom_error_message.json", %{message: message}) when is_binary(message) do
