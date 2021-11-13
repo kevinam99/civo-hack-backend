@@ -6,9 +6,9 @@ defmodule Api.AutomationTest do
   describe "devices" do
     alias Dbstore.Device
 
-    @valid_attrs %{name: "name", state: true}
-    @update_attrs %{name: "update", state: false}
-    @invalid_attrs %{name: nil, state: nil}
+    @valid_attrs %{name: "some name", active: true}
+    @update_attrs %{name: "updated", active: false}
+    @invalid_attrs %{name: nil, active: nil}
 
     def device_fixture(attrs \\ %{}) do
       {:ok, device} =
@@ -32,7 +32,7 @@ defmodule Api.AutomationTest do
     test "create_device/1 with valid data creates a device" do
       assert {:ok, %Device{} = device} = Automation.create_device(@valid_attrs)
       assert device.name == @valid_attrs.name
-      assert device.state == true
+      assert device.active == true
     end
 
     test "create_device/1 with invalid data returns error changeset" do
@@ -43,7 +43,7 @@ defmodule Api.AutomationTest do
       device = device_fixture()
       assert {:ok, %Device{} = device} = Automation.update_device(device, @update_attrs)
       assert device.name == @update_attrs.name
-      assert device.state == false
+      assert device.active == false
     end
 
     test "update_device/2 with invalid data returns error changeset" do

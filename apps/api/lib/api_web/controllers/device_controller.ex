@@ -31,13 +31,13 @@ defmodule ApiWeb.DeviceController do
     end
   end
 
-  def update(conn, %{"state" => device_state} = params) do
+  def update(conn, %{"active" => device_active} = params) do
   %Device{} = device = conn.private[:device]
   device_name_arg = Map.get(params, "name", nil)
 
   device_update_attrs = %{
     name: device_name_arg,
-    state: device_state
+    active: device_active
   }
   |> Enum.reject(fn {_key, value} -> is_nil(value) end)
   |> Enum.into(%{})

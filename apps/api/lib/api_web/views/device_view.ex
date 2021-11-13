@@ -15,7 +15,7 @@ defmodule ApiWeb.DeviceView do
   %{
       device_id: device.id,
       device_name: device.name,
-      device_state: device.state
+      device_active: device.active
   }
   end
 end
