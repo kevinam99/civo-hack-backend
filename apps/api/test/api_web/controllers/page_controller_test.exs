@@ -7,7 +7,7 @@ defmodule ApiWeb.PageControllerTest do
 
   test "GET /api", %{conn: conn} do
     conn =
-      con
+      conn
       |> get(Routes.page_path(conn, :index))
     assert response(conn, 200)
   end
