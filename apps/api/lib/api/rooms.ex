@@ -50,6 +50,12 @@ defmodule Api.Rooms do
 
   """
   def get_room(id), do: Repo.get(Room, id)
+
+  def get_room_with_preload(id) do
+    Repo.get(Room, id)
+    |> Repo.preload(:devices)
+  end
+
   @doc """
   Creates a room.
 

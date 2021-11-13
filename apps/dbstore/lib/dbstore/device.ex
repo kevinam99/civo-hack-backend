@@ -7,7 +7,7 @@ defmodule Dbstore.Device do
     field :name, :string
     field :active, :boolean, default: false
 
-    belongs_to :room, Dbstore.Room
+    belongs_to :room, Dbstore.Room, type: :string
     timestamps()
   end
 

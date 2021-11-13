@@ -21,7 +21,7 @@ defmodule Api.RoomsTest do
 
     test "list_rooms/0 returns all rooms" do
       room_fixture()
-      assert Rooms.list_rooms() |> Enum.count > 0
+      assert Rooms.list_rooms() |> Enum.count() > 0
     end
 
     test "get_room!/1 returns the room with given id" do

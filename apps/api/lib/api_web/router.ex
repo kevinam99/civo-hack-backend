@@ -14,7 +14,7 @@ defmodule ApiWeb.Router do
 
     resources "/", PageController, only: [:index]
     resources "/devices", DeviceController, only: [:index, :create]
-    resources "/rooms", RoomController, only: [:index, :show]
+    resources "/rooms", RoomController, only: [:index, :show], param: "room_id"
   end
 
   scope "/api", ApiWeb do

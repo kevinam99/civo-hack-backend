@@ -8,7 +8,8 @@ defmodule Dbstore.Repo.Migrations.CreateRooms do
 
       timestamps()
     end
-      create unique_index(:rooms, [:id, :name])
-      create index(:rooms, :id)
+
+    create unique_index(:rooms, [:id, :name])
+    create index(:rooms, :id)
   end
 end
