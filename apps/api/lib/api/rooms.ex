@@ -38,6 +38,19 @@ defmodule Api.Rooms do
   def get_room!(id), do: Repo.get!(Room, id)
 
   @doc """
+  Gets a single room.
+
+  ## Examples
+
+      iex> get_room(123)
+      %Room{}
+
+      iex> get_room(456)
+      nil
+
+  """
+  def get_room(id), do: Repo.get(Room, id)
+  @doc """
   Creates a room.
 
   ## Examples
@@ -50,7 +63,7 @@ defmodule Api.Rooms do
 
   """
   def create_room(attrs \\ %{}) do
-    %Room{}
+    %Room{id: Ecto.UUID.generate()}
     |> Room.changeset(attrs)
     |> Repo.insert()
   end

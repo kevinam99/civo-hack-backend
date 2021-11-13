@@ -6,9 +6,9 @@ defmodule Api.RoomsTest do
   describe "rooms" do
     alias Dbstore.Room
 
-    @valid_attrs %{id: "some id", name: "some name"}
-    @update_attrs %{id: "some updated id", name: "some updated name"}
-    @invalid_attrs %{id: nil, name: nil}
+    @valid_attrs %{name: "some name"}
+    @update_attrs %{name: "some updated name"}
+    @invalid_attrs %{name: nil}
 
     def room_fixture(attrs \\ %{}) do
       {:ok, room} =
@@ -20,8 +20,8 @@ defmodule Api.RoomsTest do
     end
 
     test "list_rooms/0 returns all rooms" do
-      room = room_fixture()
-      assert Rooms.list_rooms() == [room]
+      room_fixture()
+      assert Rooms.list_rooms() |> Enum.count > 0
     end
 
     test "get_room!/1 returns the room with given id" do
@@ -31,7 +31,6 @@ defmodule Api.RoomsTest do
 
     test "create_room/1 with valid data creates a room" do
       assert {:ok, %Room{} = room} = Rooms.create_room(@valid_attrs)
-      assert room.id == "some id"
       assert room.name == "some name"
     end
 
@@ -42,7 +41,6 @@ defmodule Api.RoomsTest do
     test "update_room/2 with valid data updates the room" do
       room = room_fixture()
       assert {:ok, %Room{} = room} = Rooms.update_room(room, @update_attrs)
-      assert room.id == "some updated id"
       assert room.name == "some updated name"
     end
 

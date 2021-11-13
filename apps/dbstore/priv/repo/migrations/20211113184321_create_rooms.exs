@@ -3,7 +3,7 @@ defmodule Dbstore.Repo.Migrations.CreateRooms do
 
   def change do
     create table(:rooms, primary_key: false) do
-      add :id, :string, primary_key: true, null: false, default: Ecto.UUID.generate()
+      add :id, :string, primary_key: true
       add :name, :string
 
       timestamps()
