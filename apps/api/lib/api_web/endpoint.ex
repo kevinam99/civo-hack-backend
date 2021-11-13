@@ -44,6 +44,10 @@ defmodule ApiWeb.Endpoint do
     pass: ["*/*"],
     json_decoder: Jason
 
+    plug CORSPlug,
+    origin: "*"
+    # headers: ["recaptcha_token", "x-api-key" | CORSPlug.defaults()[:headers]]
+
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
