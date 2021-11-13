@@ -36,18 +36,18 @@ defmodule Dbstore.DeviceTest do
   test "cannot update device with invalid attrs" do
     device = TestHelper.get_device() |> Repo.insert!()
 
-    changeset = Device.update_changeset(device, %{name: nil , active: nil})
+    changeset = Device.update_changeset(device, %{name: nil, active: nil})
 
     assert changeset.errors == [
-      name: {"can't be blank", [validation: :required]},
-      active: {"can't be blank", [validation: :required]}
-    ]
+             name: {"can't be blank", [validation: :required]},
+             active: {"can't be blank", [validation: :required]}
+           ]
   end
 
   test "can update device with valid attrs" do
     device = TestHelper.get_device() |> Repo.insert!()
 
-    changeset = Device.update_changeset(device, %{name: "new" , active: false})
+    changeset = Device.update_changeset(device, %{name: "new", active: false})
 
     assert changeset.errors == []
 
@@ -56,5 +56,4 @@ defmodule Dbstore.DeviceTest do
     assert updated_device.active == false
     assert updated_device.id == device.id
   end
-
 end
