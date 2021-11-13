@@ -1,4 +1,4 @@
-defmodule Api.Automation do
+defmodule Api.Automations do
   @moduledoc """
   The Automation context.
   """
@@ -36,6 +36,7 @@ defmodule Api.Automation do
   """
   def get_device(id), do: Repo.get(Device, id)
   def get_device!(id), do: Repo.get!(Device, id)
+
   @doc """
   Creates a device.
 

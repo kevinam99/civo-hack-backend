@@ -8,7 +8,7 @@ defmodule Dbstore.Application do
   def start(_type, _args) do
     children = [
       # Start the Ecto repository
-      Dbstore.Repo,
+      Dbstore.Repo
       # Start the PubSub system
       # {Phoenix.PubSub, name: Dbstore.PubSub}
       # Start a worker by calling: Dbstore.Worker.start_link(arg)

@@ -14,6 +14,6 @@ defmodule ApiWeb.ErrorViewTest do
   end
 
   test "renders 40.json" do
-    assert render(ApiWeb.ErrorView, "400.json", []) == %{errors: %{detail: "Bad data"}}
+    assert render(ApiWeb.ErrorView, "400.json", []) == %{errors: %{detail: "Bad Data"}}
   end
 end

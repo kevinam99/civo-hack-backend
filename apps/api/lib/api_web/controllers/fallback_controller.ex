@@ -5,7 +5,7 @@ defmodule ApiWeb.FallbackController do
     conn
     |> put_status(:bad_request)
     |> put_view(ApiWeb.ErrorView)
-    |> render("custom_error.json", message: message_string)
+    |> render("custom_error_message.json", message: message_string)
   end
 
   def call(conn, {:error, :not_found}) do

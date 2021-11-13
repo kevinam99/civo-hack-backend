@@ -8,7 +8,7 @@ defmodule ApiWeb.ErrorView do
   end
 
   def render("400.json", _assigns) do
-    %{errors: %{detail: "Bad data"}}
+    %{errors: %{detail: "Bad Data"}}
   end
 
   def render("404.json", _assigns) do
@@ -18,7 +18,6 @@ defmodule ApiWeb.ErrorView do
   def render("custom_error_message.json", %{message: message}) when is_binary(message) do
     %{errors: %{detail: message}}
   end
-
 
   # By default, Phoenix returns the status message from
   # the template name. For example, "404.json" becomes

@@ -8,6 +8,5 @@ defmodule Dbstore.Repo.Migrations.CreateDevices do
 
       timestamps()
     end
-
   end
 end

@@ -6,21 +6,21 @@ defmodule ApiWeb.Router do
   end
 
   pipeline :device_auth do
-   plug ApiWeb.Plugs.DeviceAuth
+    plug ApiWeb.Plugs.DeviceAuth
   end
 
   scope "/api", ApiWeb do
-  pipe_through :api
+    pipe_through :api
 
-  resources "/", PageController
-  resources "/device", DeviceController, only: [:create]
+    resources "/", PageController, only: [:index]
+    resources "/devices", DeviceController, only: [:index, :create]
   end
+
   scope "/api", ApiWeb do
     pipe_through [:api, :device_auth]
 
-    resources "/device", DeviceController, only: [:index, :show, :update], param: "device_id"
+    resources "/devices", DeviceController, only: [:show, :update], param: "device_id"
   end
-
 
   # Enables LiveDashboard only for development
   #

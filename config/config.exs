@@ -12,8 +12,8 @@ import Config
 # Configure Mix tasks and generators
 config :dbstore,
   ecto_repos: [Dbstore.Repo]
-config :phoenix, :json_library, Jason
 
+config :phoenix, :json_library, Jason
 
 config :api, ApiWeb.Endpoint,
   url: [host: "localhost"],
@@ -21,6 +21,7 @@ config :api, ApiWeb.Endpoint,
   render_errors: [view: ApiWeb.ErrorView, accepts: ~w(json), layout: false],
   pubsub_server: Api.PubSub,
   live_view: [signing_salt: "0q1xjW7R"]
+
 # Sample configuration:
 #
 #     config :logger, :console,
@@ -36,7 +37,6 @@ config :api, ApiWeb.Endpoint,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
-
 
 config :logger, level: :warn
 
