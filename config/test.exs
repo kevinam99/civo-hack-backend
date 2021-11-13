@@ -6,6 +6,7 @@ use Mix.Config
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :dbstore, Dbstore.Repo,
+adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",
   database: "dbstore_test",
@@ -18,7 +19,7 @@ config :dbstore, Dbstore.Repo,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: []
+  server: true
 
 # Set a higher stacktrace during development. Avoid configuring such
 # in production as building large stacktraces may be expensive.

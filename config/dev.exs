@@ -2,6 +2,7 @@ use Mix.Config
 
 # Configure your database
 config :dbstore, Dbstore.Repo,
+adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",
   database: "dbstore_dev",
@@ -25,3 +26,4 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
+config :logger, :console, format: "[$level] $message\n"
