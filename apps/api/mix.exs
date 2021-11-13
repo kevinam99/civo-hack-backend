@@ -43,7 +43,7 @@ defmodule Api.MixProject do
       {:telemetry_poller, "~> 0.4"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:dbstore, in_umbrella: true},
+      {:dbstore, in_umbrella: true}
     ]
   end
 
