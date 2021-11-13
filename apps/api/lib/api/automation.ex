@@ -24,19 +24,18 @@ defmodule Api.Automation do
   @doc """
   Gets a single device.
 
-  Raises `Ecto.NoResultsError` if the Device does not exist.
 
   ## Examples
 
-      iex> get_device!(123)
+      iex> get_device(123)
       %Device{}
 
-      iex> get_device!(456)
-      ** (Ecto.NoResultsError)
+      iex> get_device(456)
+      nil
 
   """
+  def get_device(id), do: Repo.get(Device, id)
   def get_device!(id), do: Repo.get!(Device, id)
-
   @doc """
   Creates a device.
 
@@ -50,7 +49,7 @@ defmodule Api.Automation do
 
   """
   def create_device(attrs \\ %{}) do
-    %Device{}
+    %Device{id: Ecto.UUID.generate()}
     |> Device.changeset(attrs)
     |> Repo.insert()
   end
@@ -69,7 +68,7 @@ defmodule Api.Automation do
   """
   def update_device(%Device{} = device, attrs) do
     device
-    |> Device.changeset(attrs)
+    |> Device.update_changeset(attrs)
     |> Repo.update()
   end
 
