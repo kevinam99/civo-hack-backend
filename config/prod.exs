@@ -5,9 +5,8 @@ import Config
 # config :dbstore, ecto_repos: [Dbstore.Repo]
 
 config :dbstore, Dbstore.Repo,
-  adapter: Ecto.Adapters.Postgres,
+
   database: System.fetch_env!("DB_NAME"),
-  url: System.get_env("DATABASE_URL"),
   username: System.fetch_env!("DB_USERNAME"),
   password: System.fetch_env!("DB_PASSWORD"),
   hostname: System.fetch_env!("DB_HOSTNAME"),
