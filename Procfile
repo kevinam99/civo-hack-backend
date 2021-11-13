@@ -1,1 +1,1 @@
-worker: MIX_ENV=prod mix phx.serveryyy
+worker: MIX_ENV=prod mix phx.server
