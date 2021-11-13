@@ -1,13 +1,11 @@
 import Config
 
-config :dbstore, Dbstore.Repo, pool_size: 10
+# config :dbstore, Dbstore.Repo, pool_size: 10
 
-config :dbstore, ecto_repos: [Dbstore.Repo]
+# config :dbstore, ecto_repos: [Dbstore.Repo]
 
 config :dbstore, Dbstore.Repo,
   adapter: Ecto.Adapters.Postgres,
-
-  config :dbstore, Dbstore.Repo,
   database: System.fetch_env!("DB_NAME"),
   url: System.get_env("DATABASE_URL"),
   username: System.fetch_env!("DB_USERNAME"),
