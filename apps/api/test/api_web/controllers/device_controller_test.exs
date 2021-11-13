@@ -109,8 +109,7 @@ defmodule ApiWeb.DeviceControllerTest do
       assert %{
                "detail" =>
                  "Error while updating the device: [active: {\"can't be blank\", [validation: :required]}]"
-             } =
-               json_response(conn, 400)["errors"]
+             } = json_response(conn, 400)["errors"]
     end
   end
 end

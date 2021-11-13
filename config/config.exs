@@ -17,7 +17,8 @@ config :phoenix, :json_library, Jason
 
 config :api, ApiWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "eswfewseswfewseagfaefgarfw",
+  secret_key_base:
+    System.get_env("SECRET_KEY_BASE") || "duygdiuyqg8xs7de298bxt87y87ny987qYN87Y87YH87QNZ8HYN87YH",
   render_errors: [view: ApiWeb.ErrorView, accepts: ~w(json), layout: false],
   pubsub_server: Api.PubSub,
   live_view: [signing_salt: "0q1xjW7R"]
