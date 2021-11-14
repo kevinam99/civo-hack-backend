@@ -2,7 +2,7 @@ use Mix.Config
 
 # Configure your database
 config :dbstore, Dbstore.Repo,
-adapter: Ecto.Adapters.Postgres,
+  adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",
   database: "dbstore_dev",
@@ -10,8 +10,7 @@ adapter: Ecto.Adapters.Postgres,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
-
-  # import Config
+# import Config
 
 config :api, ApiWeb.Endpoint,
   http: [port: 4000],
