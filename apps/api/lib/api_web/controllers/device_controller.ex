@@ -28,7 +28,6 @@ defmodule ApiWeb.DeviceController do
           "name" => _device_name
         } = params
       ) do
-    # IO.inspect(params)
     device_attrs = get_device_attrs(params)
     room = Map.get(device_attrs, :room)
 
@@ -45,8 +44,6 @@ defmodule ApiWeb.DeviceController do
 
   def update(conn, %{"active" => device_active} = params) do
     %Device{} = device = conn.private[:device]
-    # device_name_arg = Map.get(params, "name", nil)
-
     device_update_attrs =
       get_device_attrs(params)
       # %{
@@ -56,8 +53,10 @@ defmodule ApiWeb.DeviceController do
       # |> Enum.into(%{})
       |> Map.put(:active, device_active)
 
+      room = Map.get(device_update_attrs, :room)
+
     with {:device_update_check, {:ok, %Device{} = updated_device}} <-
-           {:device_update_check, Automations.update_device(device, device_update_attrs)} do
+           {:device_update_check, Automations.update_device(device, room, device_update_attrs)} do
       conn
       |> render("show.json", device: updated_device)
     else

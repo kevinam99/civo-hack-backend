@@ -24,10 +24,6 @@ defmodule ApiWeb.DeviceControllerTest do
           |> Tuple.to_list()
           |> Enum.at(1)
 
-  @device2 Automations.create_device(Map.put(@valid_attrs, :room, @room))
-           |> Tuple.to_list()
-           |> Enum.at(1)
-
   describe "index" do
     test "shows all existing devices in system", %{conn: conn} do
       conn =
@@ -114,7 +110,6 @@ defmodule ApiWeb.DeviceControllerTest do
              } = json_response(conn, 201)["data"]
 
       assert device_name == @valid_attrs.name
-
     end
 
     test "renders error when creating with invalid attrs", %{conn: conn} do
@@ -144,6 +139,30 @@ defmodule ApiWeb.DeviceControllerTest do
       assert active == @update_attrs.active
       assert device_id == @device.id
       assert device_name == @update_attrs.name
+    end
+
+    test "renders success and shows the updated device and adds to the room", %{conn: conn} do
+      new_room = Api.Rooms.create_room(%{name: "new ro"}) |> Tuple.to_list() |> Enum.at(1)
+      conn =
+        conn
+        |> patch(Routes.device_path(conn, :update, @device.id), Map.put(@update_attrs, :room_id, new_room.id))
+
+      assert %{
+        "device_active" => active,
+        "device_id" => device_id,
+        "device_name" => device_name,
+        "room" => %{
+          "room_id" => room_id,
+          "room_name" => room_name
+        }
+      }
+       = json_response(conn, 200)["data"]
+
+      assert active == @update_attrs.active
+      assert device_id == @device.id
+      assert device_name == @update_attrs.name
+      assert room_id == new_room.id
+      assert room_name == new_room.name
     end
 
     test "renders error with invalid update attrs", %{conn: conn} do

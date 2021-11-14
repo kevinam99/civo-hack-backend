@@ -31,8 +31,6 @@ defmodule ApiWeb.RoomController do
       name: room_name
     }
 
-    #  %Dbstore.Device{} = device = Api.Automations.create_device(%{name: "dev1"}) |> Tuple.to_list() |> Enum.at(1) |> IO.inspect()
-
     with {:create_room_check, {:ok, %Room{} = room}} <-
            {:create_room_check, Rooms.create_room(room_attrs)} do
       conn

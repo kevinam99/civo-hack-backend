@@ -83,8 +83,13 @@ defmodule Api.Automations do
     |> Repo.update()
   end
 
+  def update_device(%Device{} = device, nil, attrs) do
+    update_device(device, attrs)
+  end
+
   def update_device(%Device{} = device, %Dbstore.Room{} = room, attrs) do
     device
+    |> Repo.preload(:room)
     |> Device.update_changeset(room, attrs)
     |> Repo.update()
   end

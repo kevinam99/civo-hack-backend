@@ -71,6 +71,7 @@ defmodule ApiWeb.RoomControllerTest do
       assert room_name == @valid_attrs.name
     end
 
+
     test "renders error when invalid attrs are sent", %{conn: conn} do
       conn =
         conn

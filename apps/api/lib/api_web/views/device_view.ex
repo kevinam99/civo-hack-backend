@@ -24,6 +24,7 @@ defmodule ApiWeb.DeviceView do
   def render_room(%Ecto.Association.NotLoaded{}) do
     []
   end
+
   def render_room(room) do
     render_one(room, RoomView, "room_basic.json")
   end
