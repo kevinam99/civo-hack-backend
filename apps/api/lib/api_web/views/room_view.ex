@@ -20,6 +20,13 @@ defmodule ApiWeb.RoomView do
     }
   end
 
+  def render("room_basic.json", %{room: room}) do
+    %{
+      room_id: room.id,
+      room_name: room.name
+    }
+  end
+
   defp render_devices(%Ecto.Association.NotLoaded{}) do
     []
   end

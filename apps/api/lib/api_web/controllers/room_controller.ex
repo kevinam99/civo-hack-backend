@@ -25,4 +25,23 @@ defmodule ApiWeb.RoomController do
       {:get_room, nil} -> {:error, :not_found}
     end
   end
+
+  def create(conn, %{"name" => room_name} = _params) do
+    room_attrs = %{
+      name: room_name
+    }
+
+    #  %Dbstore.Device{} = device = Api.Automations.create_device(%{name: "dev1"}) |> Tuple.to_list() |> Enum.at(1) |> IO.inspect()
+
+    with {:create_room_check, {:ok, %Room{} = room}} <-
+           {:create_room_check, Rooms.create_room(room_attrs)} do
+      conn
+      |> put_status(:created)
+      |> render("show.json", room: room)
+    else
+      {:create_room_check, {:error, %Ecto.Changeset{} = changeset}} ->
+        {:error, :bad_request,
+         "Error occurred while creating the room: #{inspect(changeset.errors)}"}
+    end
+  end
 end

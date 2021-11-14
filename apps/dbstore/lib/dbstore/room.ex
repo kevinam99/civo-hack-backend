@@ -16,4 +16,24 @@ defmodule Dbstore.Room do
     |> cast(attrs, [:id, :name])
     |> validate_required([:id, :name])
   end
+
+  def changeset(room, %Dbstore.Device{} = device, attrs) do
+    room
+    |> cast(attrs, [:id, :name])
+    |> validate_required([:id, :name])
+    |> put_assoc(:devices, device)
+  end
+
+  def update_changeset(%Dbstore.Room{} = room, attrs) do
+    room
+    |> cast(attrs, [:name])
+    |> validate_required([:id, :name])
+  end
+
+  def update_changeset(%Dbstore.Room{} = room, %Dbstore.Device{} = device, attrs) do
+    room
+    |> cast(attrs, [:name])
+    |> validate_required([:id, :name])
+    |> put_assoc(:devices, device)
+  end
 end

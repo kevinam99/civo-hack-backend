@@ -55,6 +55,16 @@ defmodule Api.Automations do
     |> Repo.insert()
   end
 
+  def create_device(attrs, nil) do
+    create_device(attrs)
+  end
+
+  def create_device(attrs, %Dbstore.Room{} = room) do
+    %Device{id: Ecto.UUID.generate()}
+    |> Device.changeset(room, attrs)
+    |> Repo.insert()
+  end
+
   @doc """
   Updates a device.
 
@@ -70,6 +80,12 @@ defmodule Api.Automations do
   def update_device(%Device{} = device, attrs) do
     device
     |> Device.update_changeset(attrs)
+    |> Repo.update()
+  end
+
+  def update_device(%Device{} = device, %Dbstore.Room{} = room, attrs) do
+    device
+    |> Device.update_changeset(room, attrs)
     |> Repo.update()
   end
 

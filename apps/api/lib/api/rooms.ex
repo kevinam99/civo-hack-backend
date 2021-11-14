@@ -74,6 +74,12 @@ defmodule Api.Rooms do
     |> Repo.insert()
   end
 
+  def create_room(device, attrs) do
+    %Room{id: Ecto.UUID.generate()}
+    |> Room.changeset(device, attrs)
+    |> Repo.insert()
+  end
+
   @doc """
   Updates a room.
 
