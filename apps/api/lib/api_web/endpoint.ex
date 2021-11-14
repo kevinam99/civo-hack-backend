@@ -43,9 +43,10 @@ defmodule ApiWeb.Endpoint do
     parsers: [:urlencoded, :multipart, :json],
     pass: ["*/*"],
     json_decoder: Jason
-
+    
     plug CORSPlug,
     origin: "*"
+
 
   plug Plug.MethodOverride
   plug Plug.Head

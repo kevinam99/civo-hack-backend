@@ -5,7 +5,8 @@ import Config
 # config :dbstore, ecto_repos: [Dbstore.Repo]
 
 config :dbstore, Dbstore.Repo,
-adapter: Ecto.Adapters.Postgres,
+  adapter: Ecto.Adapters.Postgres,
+
   database: System.fetch_env!("DB_NAME"),
   url: System.get_env("DATABASE_URL"),
   # username: System.fetch_env!("DB_USERNAME"),
@@ -15,7 +16,8 @@ adapter: Ecto.Adapters.Postgres,
   ssl: true
 
 config :api, ApiWeb.Endpoint,
-http: [port: {:system, "PORT"}],
+
+  http: [port: {:system, "PORT"}],
   url: [scheme: "https", host: "https://shielded-taiga-07974.herokuapp.com/api", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   secret_key_base: System.get_env("SECRET_KEY_BASE")
