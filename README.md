@@ -1,4 +1,4 @@
-# Hackathon
+# Civo Hack
 
 This is the backend repository of our project, Home Smart Home, as part of the Civo Hackathon 2021.
 Our project is an IoT system that allows home automation irrespective of one's current location. 
