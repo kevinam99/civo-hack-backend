@@ -67,6 +67,19 @@ defmodule ApiWeb.DeviceController do
     end
   end
 
+  def delete(conn, _params) do
+    %Device{} = device = conn.private[:device]
+
+    with {:delete_device, {:ok, %Device{}}} <- {:delete_device, Automations.delete_device(device)} do
+      conn
+      |> send_resp(204, "")
+    else
+      {:delete_device, {:error, %Ecto.Changeset{} = changeset}} ->
+        {:error, :bad_request,
+         "An error occurred while delting the device: #{inspect(changeset.errors)}"}
+    end
+  end
+
   defp get_device_attrs(params) do
     device_name = Map.get(params, "name", nil)
     room_id_arg = Map.get(params, "room_id", nil)

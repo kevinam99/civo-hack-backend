@@ -20,7 +20,7 @@ defmodule ApiWeb.Router do
   scope "/api", ApiWeb do
     pipe_through [:api, :device_auth]
 
-    resources "/devices", DeviceController, only: [:show, :update], param: "device_id"
+    resources "/devices", DeviceController, only: [:show, :update, :delete], param: "device_id"
   end
 
   # Enables LiveDashboard only for development

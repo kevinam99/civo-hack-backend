@@ -160,8 +160,7 @@ defmodule ApiWeb.DeviceControllerTest do
                  "room_id" => room_id,
                  "room_name" => room_name
                }
-             } =
-               json_response(conn, 200)["data"]
+             } = json_response(conn, 200)["data"]
 
       assert active == @update_attrs.active
       assert device_id == @device.id
@@ -179,6 +178,28 @@ defmodule ApiWeb.DeviceControllerTest do
                "detail" =>
                  "Error while updating the device: [active: {\"can't be blank\", [validation: :required]}]"
              } = json_response(conn, 400)["errors"]
+    end
+  end
+
+  describe "delete" do
+    test "successfully deletes the valid device", %{conn: conn} do
+      device = fixture(:device)
+
+      conn =
+        conn
+        |> delete(Routes.device_path(conn, :delete, device.id))
+
+      assert response(conn, 204)
+    end
+
+    test "renders error when using non existing device_id", %{conn: conn} do
+      conn =
+        conn
+        |> delete(Routes.device_path(conn, :delete, "idd"))
+
+      assert %{
+               "error" => "Device not found"
+             } = json_response(conn, 401)
     end
   end
 end
