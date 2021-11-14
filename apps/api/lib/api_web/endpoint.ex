@@ -44,6 +44,9 @@ defmodule ApiWeb.Endpoint do
     pass: ["*/*"],
     json_decoder: Jason
 
+  plug CORSPlug,
+  origin: "*"
+
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
