@@ -1,5 +1,6 @@
 # Api
 
+This is our API layer. This contains the routes, contexts and tests for our API.
 To start your Phoenix server:
 
   * Setup the project with `mix setup`
