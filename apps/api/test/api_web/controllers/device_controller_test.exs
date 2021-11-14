@@ -45,7 +45,8 @@ defmodule ApiWeb.DeviceControllerTest do
       assert %{
                "device_active" => active,
                "device_id" => device_id,
-               "device_name" => device_name
+               "device_name" => device_name,
+               "room" => _room
              } = json_response(conn, 200)["data"]
 
       assert active == @device.active

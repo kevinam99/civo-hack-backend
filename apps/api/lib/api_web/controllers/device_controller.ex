@@ -18,10 +18,11 @@ defmodule ApiWeb.DeviceController do
   def show(conn, _params) do
     %Device{} = device = conn.private[:device]
 
-    db_device = Automations.get_device(device.id)
+    db_device = Automations.get_device_with_preload(device.id)
     render(conn, "show.json", device: db_device)
   end
 
+  @spec create(any, map) :: {:error, :bad_request, <<_::64, _::_*8>>} | Plug.Conn.t()
   def create(
         conn,
         %{

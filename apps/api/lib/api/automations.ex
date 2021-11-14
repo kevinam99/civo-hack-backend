@@ -35,6 +35,7 @@ defmodule Api.Automations do
 
   """
   def get_device(id), do: Repo.get(Device, id)
+  def get_device_with_preload(id), do: Repo.get(Device, id) |> Repo.preload(:room)
   def get_device!(id), do: Repo.get!(Device, id)
 
   @doc """
