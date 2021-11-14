@@ -22,5 +22,4 @@ defmodule Dbstore.Room do
     |> cast(attrs, [:name])
     |> validate_required([:id, :name])
   end
-
 end

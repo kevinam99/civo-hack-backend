@@ -45,6 +45,7 @@ defmodule ApiWeb.DeviceController do
 
   def update(conn, %{"active" => device_active} = params) do
     %Device{} = device = conn.private[:device]
+
     device_update_attrs =
       get_device_attrs(params)
       # %{
@@ -54,7 +55,7 @@ defmodule ApiWeb.DeviceController do
       # |> Enum.into(%{})
       |> Map.put(:active, device_active)
 
-      room = Map.get(device_update_attrs, :room)
+    room = Map.get(device_update_attrs, :room)
 
     with {:device_update_check, {:ok, %Device{} = updated_device}} <-
            {:device_update_check, Automations.update_device(device, room, device_update_attrs)} do

@@ -74,8 +74,6 @@ defmodule Api.Rooms do
     |> Repo.insert()
   end
 
-
-
   @doc """
   Updates a room.
 

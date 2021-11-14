@@ -44,7 +44,7 @@ defmodule Api.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:cors_plug, "~> 2.0"},
-      {:dbstore, in_umbrella: true},
+      {:dbstore, in_umbrella: true}
     ]
   end
 
