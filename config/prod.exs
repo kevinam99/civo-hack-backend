@@ -16,7 +16,7 @@ config :dbstore, Dbstore.Repo,
 
 config :api, ApiWeb.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [scheme: "https", host: "https://shielded-taiga-07974.herokuapp.com/api", port: 443],
+  url: [scheme: "https", host: "shielded-taiga-07974.herokuapp.com/api", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   secret_key_base: System.get_env("SECRET_KEY_BASE")
 
